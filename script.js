@@ -56,7 +56,7 @@ let songs = [
             { time: 17, text: "I'm a soldier who's returning half her weight" },
             { time: 22, text: "And did the twin flame bruise paint you blue?" },
             { time: 28, text: "Just between us, did the love affair maim you too?" },
-            { time: 33, text: "Cause in this city's barren cold" },
+            { time: 32.7, text: "Cause in this city's barren cold" },
             { time: 36.5, text: "I still remember the first fall of snow" },
             { time: 41.5, text: "And how it glistened as it fell" },
             { time: 46, text: "I remember it all too well" },
@@ -76,7 +76,7 @@ let songs = [
         audioSrc: "audio/backburner.mp3",
         videoBgSrc: "videos/backburner.mp4",
         lyrics: [
-            { time: 0.0, text: "But I know in a week or so" },
+            { time: 0, text: "But I know in a week or so" },
             { time: 2, text: "You'll fade away again" },
             { time: 4, text: "And I wish that I cared" },
             { time: 7.6, text: "Hey, are you still there?" },
@@ -466,6 +466,11 @@ function renderLyrics(lyrics) {
         span.setAttribute('data-time', line.time); // Simpan timestamp di data-attribute
         span.classList.add('lyric-line'); // Tambahkan kelas untuk styling
         lyricsContainer.appendChild(span);
+        // Tambah dummy spacing di bawah agar baris terakhir tidak ketutup
+        const spacer = document.createElement('div');
+        spacer.style.height = '1%'; // atau 40%-60%, tergantung efek yang diinginkan
+        lyricsContainer.appendChild(spacer);
+
         // Hapus penambahan <br> secara manual, gunakan CSS display:block atau flexbox
         // lyricsContainer.appendChild(document.createElement('br'));
     });
@@ -596,17 +601,16 @@ audioPlayer.addEventListener('timeupdate', () => {
 
         // --- Auto-scroll lirik hanya jika baris yang disorot tidak terlihat ---
         if (highlightedLine) {
-            const containerRect = lyricsContainer.getBoundingClientRect();
-            const lineRect = highlightedLine.getBoundingClientRect();
+            const containerHeight = lyricsContainer.clientHeight;
+            const lineOffset = highlightedLine.offsetTop;
+            const lineHeight = highlightedLine.offsetHeight;
 
-            // Periksa apakah baris di luar viewport kontainer
-            const isOutsideTop = lineRect.top < containerRect.top;
-            const isOutsideBottom = lineRect.bottom > containerRect.bottom;
+            const scrollTop = lineOffset - (containerHeight / 2) + (lineHeight / 2);
 
-            if (isOutsideTop || isOutsideBottom) {
-                // Scroll agar baris terdekat muncul di dalam viewport, dengan animasi smooth
-                highlightedLine.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
+            lyricsContainer.scrollTo({
+                top: scrollTop,
+                behavior: 'smooth'
+            });
         }
     }
 });

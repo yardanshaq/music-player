@@ -231,6 +231,8 @@ header h1 {
 .lyrics-container {
     height: 180px; /* Tinggi area lirik */
     overflow-y: auto;
+    position: relative;
+    scroll-behavior: smooth;
     background: radial-gradient(circle at top left, #2e004d43, #1a002c3d); /* Latar lirik sedikit beda */
     padding: 1rem;
     border-radius: 0.5rem;
