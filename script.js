@@ -45,7 +45,7 @@ let songs = [
         title: "All To Well (10 Minute Version)",
         artist: "Taylor Swift",
         album: "Red (Taylor's Version)",
-        albumArtUrl: "https://cdn-images.dzcdn.net/images/cover/a98df7a584f8a3f50d4bb312bdbc44ff/500x500-000000-80-0-0.jpg",
+        albumArtUrl: "https://i.scdn.co/image/ab67616d0000b273318443aab3531a0558e79a4d",
         audioSrc: "audio/All Too Well.mp3",
         videoBgSrc: "videos/all too well.mp4", // Path video background khusus lagu ini
         // Lirik dengan timestamp dalam detik
@@ -69,10 +69,41 @@ let songs = [
     },
     {
         id: 2,
+        title: "Backburner",
+        artist: "NIKI",
+        album: "Nicole",
+        albumArtUrl: "https://i.scdn.co/image/ab67616d0000b27389aa3d00d339b8948374782b",
+        audioSrc: "audio/backburner.mp3",
+        videoBgSrc: "videos/backburner.mp4",
+        lyrics: [
+            { time: 0, text: "But I know in a week or so" },
+            { time: 2, text: "You'll fade away again" },
+            { time: 4, text: "And I wish that I cared" },
+            { time: 7.6, text: "Hey, are you still there?" },
+            { time: 10.5, text: "Good" },
+            { time: 12.6, text: "Maybe I'm just not better than this, I haven't tried" },
+            { time: 18.2, text: "'Cause maybe you'll finally choose me after you've had more time" },
+            { time: 24.4, text: "I thought I was a fast learner" },
+            { time: 27.2, text: "But guess I won't ever mind, guess I won't ever mind" },
+            { time: 35.2, text: "Maybe I blame my mother bleeding into my stride" },
+            { time: 41, text: "Maybe it was my father and his wandering eyes" },
+            { time: 46, text: "(It's their fault that)" },
+            { time: 47.1, text: "I'll always be in your corner" },
+            { time: 50.3, text: "'Cause I don't feel alive 'til I'm burnin' on your backburner, oh-oh" },
+            { time: 57.6, text: "(Backburner, your backburner)" },
+            { time: 61.7, text: "Oh, and I know that it's sad that I settle for the backburner, oh-oh (your backburner)" },
+            { time: 71.5, text: "(Your backburner, your backburner)" },
+            { time: 73.4, text: "Oh, guess I won't ever mind crisping up on your backburner, oh-oh (your backburner)" },
+            { time: 80, text: "(Backburner, your backburner)" },
+            { time: 84, text: "Oh, as long as you still think of me, oh, oh-oh (backburner, backburner)"},
+        ]
+    },
+    {
+        id: 3,
         title: "bloodline",
         artist: "Ariana Grande",
         album: "Thank U, Next",
-        albumArtUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/Thank_U,_Next_album_cover.png/250px-Thank_U,_Next_album_cover.png",
+        albumArtUrl: "https://i.scdn.co/image/ab67616d0000b27379826f235cf8bc00256db3a6",
         audioSrc: "audio/bloodline.mp3",
         videoBgSrc: "videos/bloodline.mov", // Path video background khusus lagu ini
         // Lirik dengan timestamp dalam detik
@@ -96,11 +127,11 @@ let songs = [
         ]
     },
     {
-        id: 3,
+        id: 4,
         title: "Clarity",
         artist: "Zedd feat. Foxes",
         album: "Clarity",
-        albumArtUrl: "https://upload.wikimedia.org/wikipedia/en/3/32/Zedd_-_Clarity_%28album%29.png",
+        albumArtUrl: "https://i.scdn.co/image/ab67616d0000b273941dd3b3343d9cb9329d37bf",
         audioSrc: "audio/Clarity.mp3",
         videoBgSrc: "videos/clarity.mp4", // Path video background khusus lagu ini
         // Lirik dengan timestamp dalam detik
@@ -120,11 +151,11 @@ let songs = [
         ]
     },    
     {
-        id: 4,
+        id: 5,
         title: "High Five",
         artist: "Sigrid",
         album: "Raw",
-        albumArtUrl: "https://images.genius.com/f30841d0fb3aeda117bc40231e8cd6a8.1000x1000x1.png",
+        albumArtUrl: "https://i.scdn.co/image/ab67616d0000b273ef0d29efc80987efba1a343d",
         audioSrc: "audio/High Five.mp3",
         videoBgSrc: "videos/high five.mp4",
         lyrics: [
@@ -145,7 +176,34 @@ let songs = [
         ]
     },
     {
-        id: 5,
+        id: 6,
+        title: "La La Lost You",
+        artist: "NIKI",
+        album: "NIKI Accoustic Season: Head in the Clouds II",
+        albumArtUrl: "https://i.scdn.co/image/ab67616d0000b27347669a9be7d201ea97bbd3ee",
+        audioSrc: "audio/la la lost you.mp3",
+        videoBgSrc: "videos/la la lost you.mp4",
+        lyrics: [
+            { time: 0.9, text: "Feelin' low on the low" },
+            { time: 3.3, text: "Drivin' through NoHo" },
+            { time: 5.5, text: "If I'm honest, I'd call" },
+            { time: 7.8, text: "But I'm trying to let go" },
+            { time: 10.2, text: "And I hope you're happy" },
+            { time: 12.7, text: "Livin' life in taxis" },
+            { time: 15, text: "But you'll always have me" },
+            { time: 17.4, text: "You'll always have me" },
+            { time: 21, text: "All my demons run wild" },
+            { time: 25.7, text: "All my demons have your smile" },
+            { time: 30, text: "In the city of angels" },
+            { time: 34.8, text: "In the city of angels" },
+            { time: 40, text: "Hope New York holds you" },
+            { time: 44.8, text: "Hope it holds you like I do" },
+            { time: 48.8, text: "While my demons stay faithful" },
+            { time: 54.2, text: "In the city of angels" }
+        ]
+    },
+    {
+        id: 7,
         title: "Landslide",
         artist: "Oh Wonder", 
         album: "Landslide",
@@ -173,11 +231,11 @@ let songs = [
         ]
     },
     {
-        id: 6,
+        id: 8,
         title: "Say It - Illenium Remix",
         artist: "Flume feat. Tove Lo",
         album: "Skin: The Remixes",
-        albumArtUrl: "https://cdn-images.dzcdn.net/images/cover/8eb7aede9bc150c8f57e02eb1cadeb97/0x1900-000000-80-0-0.jpg",
+        albumArtUrl: "https://i.scdn.co/image/ab67616d0000b2734d5292e0cf0ca08ac67c8ee1",
         audioSrc: "audio/say it.mp3",
         videoBgSrc: "videos/say it.mp4",
         lyrics: [
@@ -203,6 +261,55 @@ let songs = [
             { time: 101, text: "mmm"}
         ]
     },
+    {
+        id: 9,
+        title: "Surat Cinta Untuk Starla",
+        artist: "Virgoun",
+        album: "Single",
+        albumArtUrl: "https://i.scdn.co/image/ab67616d0000b273cf6af54752ff67e6ce8f86a1",
+        audioSrc: "audio/SCUS.mp3",
+        videoBgSrc: "videos/SCUS.mp4",
+        lyrics: [
+            { time: 0, text: "Ku tuliskan kenangan tentang" },
+            { time: 4, text: "Caraku menemukan dirimu" },
+            { time: 9.6, text: "Tentang apa yang membuatku mudah" },
+            { time: 14, text: "Berikan hatiku padamu" },
+            { time: 19.8, text: "Takkan habis sejuta lagu" },
+            { time: 24, text: "Untuk menceritakan cantikmu" },
+            { time: 29.6, text: "'kan teramat panjang puisi" },
+            { time: 33.8, text: "'tuk menyuratkan cinta ini" },
+            { time: 38, text: "Telah habis sudah cinta ini" },
+            { time: 42.8, text: "Tak lagi tersisa untuk dunia" },
+            { time: 47.9, text: "Karena telah ku habiskan" },
+            { time: 51, text: "Sisa cintaku hanya untukmu" }
+        ]
+    },
+    {
+        id: 10,
+        title: "Tapi Diterima",
+        artist: "Nadin Amizah",
+        album: "Untuk Dunia, Cinta, dan Kotornya",
+        albumArtUrl: "https://i.scdn.co/image/ab67616d0000b27394847679fe7b10e27d9803f5",
+        audioSrc: "audio/tapi diterima.mp3",
+        videoBgSrc: "videos/tapi diterima.mp4",
+        lyrics: [
+            { time: 1.7, text: "Sempurna saat sedang mencoba" },
+            { time: 9, text: "Menjadi semua yang ku minta" },
+            { time: 16.5, text: "Belum pernah aku berusaha sebegitu" },
+            { time: 24, text: "Tapi di tanganmu aku tumbuh" },
+            { time: 44.8, text: "Sebuah bejana yang selalu menungguku mengisinya penuh" },
+            { time: 55.8, text: "Entah dengan air entah dengan tangis" },
+            { time: 63.3, text: "Terkadang cairan yang terlanjur basi" },
+            { time: 70.5, text: "Banyak waktu racun tapi diterima" },
+            { time: 78.4, text: "Siapapun aku kau tangan yang terbuka" },
+            { time: 88, text: "Sembuhku untukku untukmu untuk kita" },
+            { time: 103, text: "Sembuhku untukku untukmu untuk semua" },
+            { time: 118, text: "Sembuhku untukku untukmu untuk kita" },
+            { time: 133, text: "Sembuhku untukku untukmu untuk semua" },
+            { time: 153.5, text: "Untuk aku" },
+            { time: 157.5, text: "Untuk semua" }
+        ]
+    }
 
 ];
 let currentSongIndex = 0;
