@@ -505,6 +505,107 @@ function updatePlayPauseIcon() {
     }
 }
 
+function togglePlayPause() {
+    if (isPlaying) {
+        pauseTrack();
+    } else {
+        playTrack();
+    }
+}
+
+const volumeSlider = document.getElementById('volumeSlider');
+let lastVolume = 1;
+
+// SHORTCUT KEYBOARD
+document.addEventListener('keydown', function(event) {
+    // Space = Play/Pause
+    if (event.code === 'Space') {
+        event.preventDefault();
+        togglePlayPause();
+        return;
+    }
+
+    // Shortcut lain
+    if (!event.ctrlKey) return;
+
+    switch (event.code) {
+        case 'ArrowLeft':
+            event.preventDefault();
+            prevTrack();
+            break;
+        case 'ArrowRight':
+            event.preventDefault();
+            nextTrackLogic();
+            break;
+        case 'ArrowUp':
+            event.preventDefault();
+            setVolume(audioPlayer.volume + 0.1);
+            playerVolumeSlider.value = upVol * 100;
+            playerVolumeSlider.dispatchEvent(new Event('input'));
+            break;
+        case 'ArrowDown':
+            event.preventDefault();
+            setVolume(audioPlayer.volume - 0.1);
+            playerVolumeSlider.value = downVol * 100;
+            playerVolumeSlider.dispatchEvent(new Event('input')); // Trigger logika slider
+            break;
+        case 'KeyM':
+            event.preventDefault();
+            toggleMute();
+            break;
+        case 'KeyR':
+            event.preventDefault();
+            isRepeat = !isRepeat;
+            updateRepeatButtonUI();
+            break;
+        case 'KeyS':
+            event.preventDefault();
+            isShuffle = !isShuffle;
+            updateShuffleButtonUI();
+            break;
+    }
+});
+
+// SLIDER VOLUME (sinkronisasi & auto unmute)
+playerVolumeSlider.addEventListener('input', function () {
+    const vol = playerVolumeSlider.value / 100;
+    audioPlayer.volume = vol;
+
+    if (vol > 0) {
+        lastVolume = vol;
+        audioPlayer.muted = false;
+    } else {
+        audioPlayer.muted = true;
+    }
+
+    updateMuteIcon();
+});
+
+// TOGGLE MUTE FUNCTION
+function toggleMute() {
+    audioPlayer.muted = !audioPlayer.muted;
+
+    if (audioPlayer.muted) {
+        lastVolume = audioPlayer.volume;
+        playerVolumeSlider.value = 0;
+    } else {
+        playerVolumeSlider.value = lastVolume * 100;
+        audioPlayer.volume = lastVolume;
+    }
+
+    updateMuteIcon();
+}
+
+// UPDATE MUTE ICON (jika ada)
+function updateMuteIcon() {
+    const muteBtn = document.getElementById('muteButton'); // sesuaikan ID
+    if (!muteBtn) return;
+    muteBtn.innerHTML = audioPlayer.muted
+        ? '<i class="fas fa-volume-mute"></i>'
+        : '<i class="fas fa-volume-up"></i>';
+}
+
+
 function prevTrack() {
     if (songs.length === 0) return;
     if (isShuffle) {
@@ -615,6 +716,19 @@ audioPlayer.addEventListener('timeupdate', () => {
     }
 });
 
+function setVolume(vol) {
+    vol = Math.max(0, Math.min(1, vol)); // Clamp antara 0 - 1
+    audioPlayer.volume = vol;
+    playerVolumeSlider.value = (vol * 100).toFixed(0); // pastikan string, OK
+    if (vol > 0) {
+        lastVolume = vol;
+        audioPlayer.muted = false;
+    } else {
+        audioPlayer.muted = true;
+    }
+    updateMuteIcon();
+}
+
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
@@ -628,8 +742,9 @@ playerProgressBarContainer.addEventListener('click', (e) => {
     audioPlayer.currentTime = (clickX / width) * audioPlayer.duration;
 });
 
-playerVolumeSlider.addEventListener('input', (e) => {
-    audioPlayer.volume = e.target.value;
+playerVolumeSlider.addEventListener('input', function () {
+    const vol = parseFloat(playerVolumeSlider.value) / 100; // pastikan angka
+    setVolume(vol);
 });
 
 // Event Listener untuk slider kecepatan
