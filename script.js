@@ -76,7 +76,7 @@ let songs = [
         audioSrc: "audio/backburner.mp3",
         videoBgSrc: "videos/backburner.mp4",
         lyrics: [
-            { time: 0, text: "But I know in a week or so" },
+            { time: 0.0, text: "But I know in a week or so" },
             { time: 2, text: "You'll fade away again" },
             { time: 4, text: "And I wish that I cared" },
             { time: 7.6, text: "Hey, are you still there?" },
