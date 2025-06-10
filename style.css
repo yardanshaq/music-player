@@ -259,6 +259,19 @@ header h1 {
     background: #5a5a6e;
 }
 
+.lyric-line {
+    cursor: pointer;
+    display: inline-block;
+    color: #d0d0d0;
+    font-weight: 400;
+    transition: color 0.2s ease;
+    margin: 4px 0;
+}
+
+.lyric-line.active {
+    color: #ffffff;
+    font-weight: 500;
+}
 
 .player-controls {
     margin-top: auto; /* Mendorong kontrol ke bawah jika ada ruang */

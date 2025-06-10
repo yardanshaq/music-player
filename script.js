@@ -480,7 +480,6 @@ function loadSong(song) {
     updatePlayPauseIcon();
 }
 
-// Fungsi baru untuk merender lirik
 function renderLyrics(lyrics) {
     lyricsContainer.innerHTML = ''; // Bersihkan container lirik
     if (!lyrics || lyrics.length === 0) {
@@ -491,19 +490,40 @@ function renderLyrics(lyrics) {
     lyrics.forEach(line => {
         const span = document.createElement('span');
         span.textContent = line.text;
-        span.setAttribute('data-time', line.time); // Simpan timestamp di data-attribute
-        span.classList.add('lyric-line'); // Tambahkan kelas untuk styling
+        span.setAttribute('data-time', line.time);
+        span.classList.add('lyric-line');
         lyricsContainer.appendChild(span);
-        // Tambah dummy spacing di bawah agar baris terakhir tidak ketutup
-        const spacer = document.createElement('div');
-        spacer.style.height = '1%'; // atau 40%-60%, tergantung efek yang diinginkan
-        lyricsContainer.appendChild(spacer);
 
-        // Hapus penambahan <br> secara manual, gunakan CSS display:block atau flexbox
-        // lyricsContainer.appendChild(document.createElement('br'));
+        const spacer = document.createElement('div');
+        spacer.style.height = '1%';
+        lyricsContainer.appendChild(spacer);
     });
 }
 
+lyricsContainer.addEventListener('click', function (e) {
+    if (e.target.classList.contains('lyric-line')) {
+        const time = parseFloat(e.target.dataset.time);
+        audioPlayer.currentTime = time;
+        playTrack(); // <-- ini akan play dan update ikon juga
+    }
+});
+
+// Highlight lirik aktif saat audio diputar
+if (audioPlayer) {
+    audioPlayer.addEventListener('timeupdate', () => {
+        const current = audioPlayer.currentTime;
+        const lines = Array.from(lyricsContainer.querySelectorAll('.lyric-line'));
+        lyricsData.forEach((line, i) => {
+            const nextLineTime = lyricsData[i + 1]?.time || Infinity;
+            const lineEl = lines[i];
+            if (current >= line.time && current < nextLineTime) {
+                lineEl.classList.add('active');
+            } else {
+                lineEl.classList.remove('active');
+            }
+        });
+    });
+}
 
 function playTrack() {
     if (!audioPlayer.src || audioPlayer.src === window.location.href) {
