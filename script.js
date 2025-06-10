@@ -357,7 +357,13 @@ function showHomePage() {
     backgroundVideo.pause(); // Jeda video background
     backgroundVideo.src = ""; // Kosongkan src video
     backgroundVideo.load();
+
     pauseTrack(); // Jeda musik saat kembali ke home
+    audioPlayer.src = ""; // Kosongkan sumber audio agar tidak bisa diputar kembali
+    audioPlayer.load(); // Pastikan audio player tidak memuat lagu sebelumnya
+    isPlaying = false; // Set status agar tidak dianggap sedang bermain
+    currentSongIndex = -1; // Reset indeks lagu saat kembali ke home
+    updatePlayPauseIcon(); // Perbarui ikon
 }
 
 // Fungsi untuk menampilkan halaman detail lagu (tetap dipertahankan, tapi tidak dipanggil dari song list click)
