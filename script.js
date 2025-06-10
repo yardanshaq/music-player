@@ -232,6 +232,34 @@ let songs = [
     },
     {
         id: 8,
+        title: "Pernah Dicinta",
+        artist: "Elsa Japasal",
+        album: "Pernah Dicinta",
+        albumArtUrl: "https://i.scdn.co/image/ab67616d0000b273f923993685ae246ac2c46505",
+        audioSrc: "audio/pernah dicinta.mp3",
+        videoBgSrc: "videos/pernah dicinta.mp4",
+        lyrics: [
+            { time: 0, text: "Tak mengapa jika nanti kau lupa tentang aku" },
+            { time: 8.8, text: "Tak mengapa jika ku bukan bagian di hidupmu" },
+            { time: 17.7, text: "Abaikan saja air mata dan tangisku" },
+            { time: 25.8, text: "Nanti juga akan mereda, akan berhenti semoga" },
+            { time: 34.5, text: "Silakan ambil kembali cinta yang telah kau beri" },
+            { time: 43.3, text: "Silakan hapus kenangan jika itu buatmu tenang" },
+            { time: 51.8, text: "Tapi izinkan ku simpan yang paling membekas di hati" },
+            { time: 59.8, text: "Meski semua sementara, kau buatku merasa pernah dicinta" },
+            { time: 73.8, text: "Hanya saja pernah ku meyakinkan " },
+            { time: 81.4, text: "Hati tuk hanya bisa jatuh cinta" },
+            { time: 87, text: "Satu kali saja dan kamulah yang kupilih" },
+            { time: 95.7, text: "Silakan ambil kembali cinta yang telah kau beri" },
+            { time: 104, text: "Silakan hapus kenangan jika itu buatmu tenang" },
+            { time: 113, text: "Tapi izinkan ku simpan yang paling membekas di hati" },
+            { time: 121.3, text: "Meski semua sementara, kau buatku merasa pernah dicinta" },
+            { time: 138.7, text: "Meski semua sementara, kau buatku merasa pernah dicinta" },
+            { time: 156, text: "Pernah dicinta" },
+        ]
+    },
+    {
+        id: 9,
         title: "Say It - Illenium Remix",
         artist: "Flume feat. Tove Lo",
         album: "Skin: The Remixes",
@@ -262,7 +290,7 @@ let songs = [
         ]
     },
     {
-        id: 9,
+        id: 10,
         title: "Surat Cinta Untuk Starla",
         artist: "Virgoun",
         album: "Single",
@@ -285,7 +313,7 @@ let songs = [
         ]
     },
     {
-        id: 10,
+        id: 11,
         title: "Tapi Diterima",
         artist: "Nadin Amizah",
         album: "Untuk Dunia, Cinta, dan Kotornya",
@@ -528,9 +556,21 @@ document.addEventListener('keydown', function(event) {
     }
 
     // Shortcut lain
-    if (!event.ctrlKey) return;
+    if (!event.shiftKey && !event.ctrlKey) return;
 
     switch (event.code) {
+        case 'ArrowRight':
+            event.preventDefault();
+            if (!isNaN(audioPlayer.duration)) {
+                audioPlayer.currentTime = Math.min(audioPlayer.duration, audioPlayer.currentTime + 5);
+                console.log('Fast forward +5s');
+            }
+            break;
+        case 'ArrowLeft':
+            event.preventDefault();
+            audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 5);
+            console.log('Rewind -5s');
+            break;
         case 'ArrowLeft':
             event.preventDefault();
             prevTrack();
