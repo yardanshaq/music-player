@@ -574,6 +574,9 @@ let lastVolume = 1;
 
 // SHORTCUT KEYBOARD
 document.addEventListener('keydown', function(event) {
+    // Shortcut mati kalau playerPage tidak aktif (hilang / display: none)
+    if (!playerPage || playerPage.offsetParent === null) return;
+    
     // Space = Play/Pause
     if (event.code === 'Space') {
         event.preventDefault();
